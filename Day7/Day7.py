@@ -48,11 +48,11 @@ def part_1(dir):
 
 def part_2(dir):
     
-    total_space = 70000000
-    update_size = 30000000
+    TOTAL_SPACE = 70000000
+    UPDATE_SIZE = 30000000
     used_space = dir['/'] #value (size) of main directory
-    free_space = total_space - used_space
-    space_needed = update_size - free_space
+    free_space = TOTAL_SPACE - used_space
+    space_needed = UPDATE_SIZE - free_space
     delete_options = []
 
     for key, value in dir.items():
