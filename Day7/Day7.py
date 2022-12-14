@@ -3,15 +3,13 @@ from collections import defaultdict
 
 def create_directories(input):
 
-    terminal_output = []
     filepath = []
     sizes = defaultdict(int)
 
     with open(input, "r") as input_file:
-        for line in input_file:
-            terminal_output.append(line.strip())
+        file_lines = input_file.readlines()
+        terminal_output = [line.strip() for line in file_lines]
     
-    #parse input commands
     for line in terminal_output:
         if line.startswith('$ cd'):
             directory = line.split()[-1]
@@ -24,11 +22,9 @@ def create_directories(input):
             continue
 
         else:
-            file_size, file_name = line.split()
+            file_size = line.split()[0]
             if file_size.isdigit():
                 for i in range(len(filepath)):
-                    #creating new dict entry with size as value
-                    #and current filepath stack as key
                     sizes['/'.join(filepath[:i+1])] += int(file_size)
 
     return sizes
@@ -39,7 +35,7 @@ def part_1(dir):
     sum_under_max = 0
     MAX_SIZE = 100000
 
-    for key, value in dir.items():
+    for value in dir.values():
         if value <= MAX_SIZE:
             sum_under_max += value
 
@@ -55,7 +51,7 @@ def part_2(dir):
     space_needed = UPDATE_SIZE - free_space
     delete_options = []
 
-    for key, value in dir.items():
+    for value in dir.values():
         if value > space_needed:
             delete_options.append(value)
     
