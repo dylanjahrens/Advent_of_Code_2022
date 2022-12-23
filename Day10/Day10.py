@@ -29,8 +29,8 @@ def new_cycle():
     pixel_col = (cycle-1) % 40
     sprite = [(x-1)%40, (x)%40, (x+1)%40]
 
-    for i in range(3):
-        if sprite[i] == pixel_col:
+    for i in sprite:
+        if i == pixel_col:
             matrix[pixel_row][pixel_col] = '#'
 
 
