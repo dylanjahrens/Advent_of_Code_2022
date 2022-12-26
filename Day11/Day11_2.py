@@ -22,7 +22,8 @@ def get_monkey_data(input):
         id = int(re.findall("(\d+)", monkey[0])[0])
         monkeys[id] = dict()
         monkeys[id]["items"] = [int(i) for i in re.findall("(\d+)", monkey[1])]
-        operation, operand = re.findall("(\+|\*)\s(old|\d+)", monkey[2])[0]
+        #operation, operand = re.findall("(\+|\*)\s(old|\d+)", monkey[2])[0]
+        operation, operand = monkey[2].split()[-2:]
         monkeys[id]["opn"] = operation
         monkeys[id]["op"] = operand
         monkeys[id]["div_by"] = int(re.findall("(\d+)", monkey[3])[0])
