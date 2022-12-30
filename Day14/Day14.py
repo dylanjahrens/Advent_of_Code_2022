@@ -1,17 +1,10 @@
 def get_rocks(input):
-    
-    with open(input, "r") as input_file:
-        file_lines = input_file.readlines()
-        input_list = [line.strip().split() for line in file_lines]
 
+    data = open(input).read().strip()
     coord_list = []
-    for path in input_list:
-        path_coords = []
-        for co in path:
-            if co != '->':
-                x,y = co.split(',')
-                path_coords.append((int(x), int(y)))
-        coord_list.append(path_coords)
+    for line in data.split('\n'):
+        points = [tuple(map(int, p.split(','))) for p in line.split(' -> ')]
+        coord_list.append(points)
 
     rocks = set()
     for path in coord_list:
