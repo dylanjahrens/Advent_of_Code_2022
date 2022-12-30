@@ -39,10 +39,7 @@ def get_rocks(input):
 
 def move_sand(rocks):
     
-    bottom = 0 #the point where grains will fall in endless void
-    for rock in rocks:
-        if rock[1] > bottom:
-            bottom = rock[1]
+    bottom = max((y for x, y in rocks))
 
     offsets = {
         "down": (0, 1),

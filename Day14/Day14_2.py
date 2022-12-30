@@ -39,11 +39,7 @@ def get_rocks(input):
 
 def move_sand(rocks):
     
-    bottom = 0 
-    for rock in rocks:
-        if rock[1] > bottom:
-            bottom = rock[1]
-    bottom += 2
+    bottom = max((y for x, y in rocks)) +2
 
     offsets = {
         "down": (0, 1),
